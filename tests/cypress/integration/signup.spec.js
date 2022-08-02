@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 import signupPage from '../support/pages/signup'
+
+
 var fakerBr = require('faker-br');
 
 describe('Cadastro', function () {
@@ -15,7 +17,7 @@ describe('Cadastro', function () {
             signupPage.go();
             signupPage.form(user);
             signupPage.submit();
-            signupPage.toastHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
+            signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
         });
 
         after(function () {
@@ -44,7 +46,7 @@ describe('Cadastro', function () {
             signupPage.go();
             signupPage.form(user);
             signupPage.submit();
-            signupPage.toastHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
+            signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
         });
     })
 
@@ -75,7 +77,7 @@ describe('Cadastro', function () {
             signupPage.go();
             signupPage.form(user);
             signupPage.submit();
-            signupPage.toastHaveText('Email já cadastrado para outro usuário.');
+            signupPage.toast.shouldHaveText('Email já cadastrado para outro usuário.');
         });
     })
 })
