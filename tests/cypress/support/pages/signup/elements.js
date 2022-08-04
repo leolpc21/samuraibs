@@ -3,5 +3,6 @@ exports.el = {
   email: 'input[placeholder$="email"]',
   password: 'input[placeholder*="senha"]',
   signupButton: ('button', 'Cadastrar'),
-  buttonCriarConta: 'a[href="/signup"]'
+  buttonCriarConta: 'a[href="/signup"]',
+  alertError: '.alert-error'
 }
