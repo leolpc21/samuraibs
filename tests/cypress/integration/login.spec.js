@@ -10,8 +10,24 @@ describe('Login', function () {
     const user = {
       name: 'Leo Costa',
       email: 'leo@teste.com',
-      password: 'lpc123'
+      password: 'lpc123',
+      is_provider: true
     }
+
+    before(function () {
+      cy.task('removeUser', user.email)
+        .then(function (result) {
+          console.log(result)
+        })
+
+      cy.request(
+        'POST',
+        'http://localhost:3333/users',
+        user
+      ).then(function (response) {
+        expect(response.status).to.eq(200)
+      })
+    })
 
     it('Deve logar com sucesso', function () {
       loginPage.go();
