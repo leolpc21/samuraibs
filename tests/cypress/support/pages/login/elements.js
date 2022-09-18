@@ -1,6 +1,5 @@
 exports.el = {
   email: 'input[placeholder$=email]',
   password: 'input[placeholder="Sua senha secreta"]',
-  buttonEntrar: ('button[type=submit]', "Entrar"),
-  alertError: ".alert-error"
+  buttonEntrar: ('button[type=submit]', "Entrar")
 }

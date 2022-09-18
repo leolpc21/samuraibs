@@ -73,9 +73,30 @@ describe('Login', function () {
 
         loginPage.form(user);
         loginPage.submit();
-        loginPage.alertHaveText("Informe um email válido");
+        loginPage.alert.haveText("Informe um email válido");
       })
     });
+  })
+
+  context('Quando os campos estão vazios', function () {
+
+    const alertMessages = [
+      'E-mail é obrigatório',
+      'Senha é obrigatória'
+    ];
+
+    before(function () {
+      loginPage.go();
+      loginPage.submit();
+    })
+
+    alertMessages.forEach(function (alert) {
+
+      it('Deve exibir ' + alert.toLowerCase(), function () {
+        loginPage.alert.haveText(alert)
+      });
+
+    })
   })
 
 })
