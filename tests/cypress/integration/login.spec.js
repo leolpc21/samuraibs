@@ -50,4 +50,32 @@ describe('Login', function () {
     })
   })
 
+  context("Quando o formato do e-mail é invalido", function () {
+
+    const emails = [
+      'leo.com.br',
+      '@gmail.com',
+      '@',
+      'leo@',
+      '123',
+      '&^*&*^',
+      'xpto123'
+    ]
+
+    before(function () {
+      loginPage.go();
+    })
+
+    emails.forEach(function (email) {
+      it("Não deve logar com o email: " + email, function () {
+
+        const user = { email: email, password: 'pwd123' }
+
+        loginPage.form(user);
+        loginPage.submit();
+        loginPage.alertHaveText("Informe um email válido");
+      })
+    });
+  })
+
 })
