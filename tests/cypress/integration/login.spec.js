@@ -6,22 +6,22 @@ import dashPage from "../support/pages/dash"
 describe('Login', function () {
 
   before(function () {
-    cy.fixture('leo').then(function (leo) {
-      this.leo = leo
+    cy.fixture('login').then(function (login) {
+      this.success = login.success
     })
   })
 
   context('Quando o usuário é muito bom', function () {
 
     before(function () {
-      cy.postUser(this.leo);
+      cy.postUser(this.success);
     })
 
     it('Deve logar com sucesso', function () {
       loginPage.go();
-      loginPage.form(this.leo);
+      loginPage.form(this.success);
       loginPage.submit();
-      dashPage.header.userLoggedIn(this.leo.name);
+      dashPage.header.userLoggedIn(this.success.name);
     });
 
   })

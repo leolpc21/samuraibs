@@ -1,0 +1,23 @@
+{
+  "success": {
+    "name": "Leo Costa",
+    "email": "leo@teste.com",
+    "password": "lpc123"
+  },
+  "email_dup": {
+    "name": "João Lins",
+    "email": "joao@teste.com",
+    "password": "lpc123",
+    "is_provider": true
+  },
+  "email_inv": {
+    "name": "Jose Henrique",
+    "email": "jose.teste.com",
+    "password": "lpc123"
+  },
+  "short_password": {
+    "name": "Jasmyne Linda",
+    "email": "jajalinda@gmail.com",
+    "password": null
+  }
+}

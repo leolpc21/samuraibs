@@ -1,0 +1,8 @@
+{
+  "success": {
+    "name": "Leo Costa",
+    "email": "leo@teste.com",
+    "password": "lpc123",
+    "is_provider": true
+  }
+}
