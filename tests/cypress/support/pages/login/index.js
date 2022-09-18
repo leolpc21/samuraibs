@@ -22,6 +22,14 @@ class LoginPage {
     cy.contains(el.buttonEntrar).click();
   }
 
+  criarConta() {
+    cy.get(el.buttonCriarConta).click();
+  }
+
+  recoveryPass() {
+    cy.contains(el.buttonEsqueciSenha).should("be.visible").click();
+  }
+
 }
 
 export default new LoginPage()

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import signupPage from '../support/pages/signup'
-
+import loginPage from "../support/pages/login"
 
 var fakerBr = require('faker-br');
 
@@ -24,13 +24,14 @@ describe('Cadastro', function () {
 
 		it('Deve cadastrar um novo usuário', function () {
 			signupPage.go();
+			loginPage.criarConta();
 			signupPage.form(user);
 			signupPage.submit();
 			signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
 		});
 
 		after(function () {
-			cy.removeUser(user)
+			cy.removeUser(user.email)
 		})
 	})
 
@@ -42,6 +43,7 @@ describe('Cadastro', function () {
 
 		it('Criando uma task que remove usuario do banco', function () {
 			signupPage.go();
+			loginPage.criarConta();
 			signupPage.form(this.success);
 			signupPage.submit();
 			signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
@@ -56,6 +58,7 @@ describe('Cadastro', function () {
 
 		it('Deve validar usuario já cadastrado.', function () {
 			signupPage.go();
+			loginPage.criarConta();
 			signupPage.form(this.email_dup);
 			signupPage.submit();
 			signupPage.toast.shouldHaveText('Email já cadastrado para outro usuário.');
@@ -66,6 +69,7 @@ describe('Cadastro', function () {
 
 		it('Deve exibir mensagem de alerta', function () {
 			signupPage.go();
+			loginPage.criarConta();
 			signupPage.form(this.email_inv);
 			signupPage.submit();
 			signupPage.alert.haveText('Informe um email válido')
@@ -78,6 +82,7 @@ describe('Cadastro', function () {
 
 		beforeEach(function () {
 			signupPage.go();
+			loginPage.criarConta();
 		})
 
 		passwords.forEach(function (p) {
@@ -105,6 +110,7 @@ describe('Cadastro', function () {
 
 		before(function () {
 			signupPage.go();
+			loginPage.criarConta();
 			signupPage.submit();
 		})
 

@@ -11,7 +11,6 @@ class SignupPage {
 
   go() {
     cy.visit('/');
-    cy.get(el.buttonCriarConta).click();
   }
 
   form(user) {
