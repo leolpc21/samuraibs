@@ -21,10 +21,7 @@ describe('Cadastro', function () {
 		});
 
 		after(function () {
-			cy.task('removeUser', user.email)
-				.then(function (result) {
-					console.log(result)
-				})
+			cy.removeUser(user)
 		})
 	})
 
@@ -36,10 +33,7 @@ describe('Cadastro', function () {
 		}
 
 		before(function () {
-			cy.task('removeUser', user.email)
-				.then(function (result) {
-					console.log(result)
-				})
+			cy.removeUser(user)
 		})
 
 		it('Criando uma task que remove usuario do banco', function () {
@@ -59,18 +53,7 @@ describe('Cadastro', function () {
 		}
 
 		before(function () {
-			cy.task('removeUser', user.email)
-				.then(function (result) {
-					console.log(result)
-				})
-
-			cy.request(
-				'POST',
-				'http://localhost:3333/users',
-				user
-			).then(function (response) {
-				expect(response.status).to.eq(200)
-			})
+			cy.postUser(user);
 		})
 
 		it('Deve validar usuario já cadastrado.', function () {
