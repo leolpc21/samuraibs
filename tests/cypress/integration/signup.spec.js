@@ -6,6 +6,12 @@ var fakerBr = require('faker-br');
 
 describe('Cadastro', function () {
 
+	before(function () {
+		cy.fixture('leo').then(function (leo) {
+			this.leo = leo
+		})
+	})
+
 	context('Cadastro usando Fake e depois deleta do banco', function () {
 		const user = {
 			name: fakerBr.name.findName(),
@@ -26,19 +32,14 @@ describe('Cadastro', function () {
 	})
 
 	context('Deve cadastrar com sucesso', function () {
-		const user = {
-			name: 'Leo Costa',
-			email: 'leo@teste.com',
-			password: 'lpc123'
-		}
 
 		before(function () {
-			cy.removeUser(user)
+			cy.removeUser(this.leo.email)
 		})
 
 		it('Criando uma task que remove usuario do banco', function () {
 			signupPage.go();
-			signupPage.form(user);
+			signupPage.form(this.leo);
 			signupPage.submit();
 			signupPage.toast.shouldHaveText('Agora você se tornou um(a) Samurai, faça seu login para ver seus agendamentos!');
 		});

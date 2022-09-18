@@ -40,7 +40,7 @@ Cypress.Commands.add("postUser", function (user) {
 })
 
 Cypress.Commands.add("removeUser", function (user) {
-  cy.task('removeUser', user.email)
+  cy.task('removeUser', user)
     .then(function (result) {
       console.log(result)
     })

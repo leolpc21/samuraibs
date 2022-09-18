@@ -5,24 +5,23 @@ import dashPage from "../support/pages/dash"
 
 describe('Login', function () {
 
+  before(function () {
+    cy.fixture('leo').then(function (leo) {
+      this.leo = leo
+    })
+  })
+
   context('Quando o usuário é muito bom', function () {
 
-    const user = {
-      name: 'Leo Costa',
-      email: 'leo@teste.com',
-      password: 'lpc123',
-      is_provider: true
-    }
-
     before(function () {
-      cy.postUser(user);
+      cy.postUser(this.leo);
     })
 
     it('Deve logar com sucesso', function () {
       loginPage.go();
-      loginPage.form(user);
+      loginPage.form(this.leo);
       loginPage.submit();
-      dashPage.header.userLoggedIn(user.name);
+      dashPage.header.userLoggedIn(this.leo.name);
     });
 
   })
