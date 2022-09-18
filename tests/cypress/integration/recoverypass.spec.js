@@ -24,4 +24,18 @@ describe("Resgate de senha", function () {
       recoveryPassPage.toast.shouldHaveText('Enviamos um e-mail para confirmar a recuperação de senha, cheque sua caixa de entrada.')
     })
   })
+
+  context("Quando o usuário solicita o resgate", function () {
+
+    before(function () {
+      cy.postUser(this.data)
+      cy.recoveryPass(this.data.email)
+    })
+
+    it("Deve poder cadastrar uma nova senha", function () {
+
+      // cy.log(Cypress.env('recoveryToken'))
+
+    })
+  })
 })
