@@ -2,6 +2,7 @@
 
 import loginPage from "../support/pages/login"
 import recoveryPassPage from '../support/pages/recoveryPass'
+import resetPassPage from '../support/pages/resetPass'
 
 describe("Resgate de senha", function () {
 
@@ -34,8 +35,10 @@ describe("Resgate de senha", function () {
 
     it("Deve poder cadastrar uma nova senha", function () {
 
-      // cy.log(Cypress.env('recoveryToken'))
-
+      resetPassPage.go(Cypress.env('recoveryToken'));
+      resetPassPage.form("lpc123");
+      resetPassPage.submit();
+      resetPassPage.toast.shouldHaveText('Agora você já pode logar com a sua nova senha secreta.');
     })
   })
 })
