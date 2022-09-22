@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import loginPage from "../support/pages/login"
 import dashPage from "../support/pages/dash"
 import { customer, provider, appointment } from "../support/factories/dash"
 
@@ -19,9 +18,7 @@ describe('Dashboard', function () {
     it("O mesmo deve ser exibido no dashboard", function () {
       const day = Cypress.env('appointmentDay')
 
-      loginPage.go()
-      loginPage.form(provider)
-      loginPage.submit()
+      cy.apiLogin(provider, true)
 
       dashPage.calendarShouldBeVisible()
       dashPage.selectDay(day)
