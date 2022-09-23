@@ -80,9 +80,19 @@ Cypress.Commands.add("recoveryPass", function (email) {
 Cypress.Commands.add('createAppointment', function (hour) {
 
   let now = new Date()
-  now.setDate(now.getDate() + 1)
+  let weekday = now.getDay()
 
-  Cypress.env('appointmentDay', now.getDate())
+  if (weekday === 5) {
+    now.setDate(now.getDate() + 3)
+  }
+  else if (weekday === 6) {
+    now.setDate(now.getDate() + 2)
+  }
+  else {
+    now.setDate(now.getDate() + 1)
+  }
+
+  Cypress.env('appointmentDate', now)
 
   const date = moment(now).format(`YYYY-MM-DD ${hour}:00`)
 
