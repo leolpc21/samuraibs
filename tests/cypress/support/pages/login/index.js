@@ -11,6 +11,9 @@ class LoginPage {
 
   go() {
     cy.visit("/");
+
+    cy.contains(el.titleLogin)
+      .should('be.visible')
   }
 
   form(user) {
@@ -24,10 +27,16 @@ class LoginPage {
 
   criarConta() {
     cy.get(el.buttonCriarConta).click();
+
+    cy.contains(el.titleSignup)
+      .should('be.visible')
   }
 
   recoveryPass() {
     cy.contains(el.buttonEsqueciSenha).should("be.visible").click();
+
+    cy.contains(el.titleRecoveryPass)
+      .should('be.visible')
   }
 
 }
