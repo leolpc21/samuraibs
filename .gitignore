@@ -1,5 +1,5 @@
-tests/yarn.lock
-tests/package-lock.json
-tests/node_modules
-tests/cypress/videos
-tests/cypress/screenshots
+node_modules
+apps
+cypress/videos
+cypress/screenshots
+package-lock.json
