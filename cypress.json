@@ -2,7 +2,6 @@
   "baseUrl": "https://samuraibs-web-leo.herokuapp.com",
   "apiServer": "https://samuraibs-api-leo.herokuapp.com",
   "defaultCommandTimeout": 40000,
-  "video": false,
   "viewportWidth": 1440,
   "viewportHeight": 900,
   "dbConfig": {
